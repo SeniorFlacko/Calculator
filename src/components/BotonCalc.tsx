@@ -6,14 +6,17 @@ interface IBotonCalc {
   texto: string;
   color?: string;
   ancho?: boolean;
+  accion: (numeroTexto: string) => void;
 }
 
-const BotonCalc = ({texto, color = '#2D2D2D', ancho = false}: IBotonCalc) => {
+const BotonCalc = ({
+  texto,
+  color = '#2D2D2D',
+  ancho = false,
+  accion,
+}: IBotonCalc) => {
   return (
-    <TouchableOpacity
-      onPress={() => {
-        console.log('ok');
-      }}>
+    <TouchableOpacity onPress={() => accion(texto)}>
       <View
         style={[
           styles.boton,
